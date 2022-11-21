@@ -7,6 +7,7 @@ export default function Form() {
     email: '',
     textArea: '',
     checkBox: false,
+    employment: '',
   })
 
   console.log(formData.checkBox)
@@ -72,6 +73,38 @@ export default function Form() {
         checked={formData.checkBox}
       />
       <label htmlFor="isFriendly">Are You Friendly</label>
+      <fieldset>
+        <legend>Current Employment Status</legend>
+        <input
+          type="radio"
+          id="unemployed"
+          onChange={handleChange}
+          name="employment"
+          value="unemployed"
+          checked={formData.employment === 'unemployed'}
+        />
+        <label htmlFor="unemployed">Unemployed</label>
+        <br />
+        <input
+          type="radio"
+          id="part-time"
+          onChange={handleChange}
+          name="employment"
+          value="part-time"
+          checked={formData.employment === 'part-time'}
+        />
+        <label htmlFor="part-time">part-time</label>
+        <br />
+        <input
+          type="radio"
+          id="full-time"
+          onChange={handleChange}
+          name="employment"
+          value="full-time"
+          checked={formData.employment === 'full-time'}
+        />
+        <label htmlFor="full-time">full-time</label>
+      </fieldset>
     </form>
   )
 }
