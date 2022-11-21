@@ -6,15 +6,31 @@ export default function Form() {
     lastName: '',
     email: '',
     textArea: '',
+    checkBox: false,
   })
 
-  console.log(formData.textArea)
+  console.log(formData.checkBox)
+  console.log(formData)
 
+  // 1 method without distructuring
+  //   function handleChange(event) {
+  //     setFormData((prevFormData) => {
+  //       return {
+  //         ...prevFormData,
+  //         [event.target.name]:
+  //           event.target.name === 'checkBox'
+  //             ? event.target.checked
+  //             : event.target.value,
+  //       }
+  //     })
+  //   }
+  // 2nd method with distructuring
   function handleChange(event) {
+    const { name, value, type, checked } = event.target
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value,
+        [name]: type === 'checkbox' ? checked : value,
       }
     })
   }
@@ -48,6 +64,14 @@ export default function Form() {
         name="textArea"
         value={formData.textArea}
       />
+      <input
+        type="checkbox"
+        id="isFriendly"
+        onChange={handleChange}
+        name="checkBox"
+        checked={formData.checkBox}
+      />
+      <label htmlFor="isFriendly">Are You Friendly</label>
     </form>
   )
 }
